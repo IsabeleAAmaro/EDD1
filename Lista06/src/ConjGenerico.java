@@ -1,6 +1,6 @@
 public class ConjGenerico<T extends Comparable<T>>
 {
-	private Elo prim;  /* Referência para primeiro elemento. */
+	private Elo prim;  /* Refer?ncia para primeiro elemento. */
 
 	/* Classe auxiliar para guardar cada elemento do conjunto. */
 	private class Elo
@@ -32,7 +32,7 @@ public class ConjGenerico<T extends Comparable<T>>
 		prim = null;
 	}
 
-	/* Método privado para realizar uma cópia de um outro conjunto. */
+	/* M?todo privado para realizar uma c?pia de um outro conjunto. */
 	private void copia(ConjGenerico<T> conj2)
 	{
 		Elo ult = null, q;
@@ -52,7 +52,7 @@ public class ConjGenerico<T extends Comparable<T>>
 		}
 	}
 
-	/* Método privado para realizar uma cópia de um outro conjunto. */
+	/* M?todo privado para realizar uma c?pia de um outro conjunto. */
 	public void apaga()
 	{
 		for (Elo p = prim; p != null; p = prim)
@@ -62,7 +62,7 @@ public class ConjGenerico<T extends Comparable<T>>
 		}
 	}
 
-	/* Simula uma sobrecarga do operador de atribuição. */
+	/* Simula uma sobrecarga do operador de atribui??o. */
 	public ConjGenerico<T> atribui(ConjGenerico<T> conj2){
 		if (this != conj2)
 		{
@@ -73,13 +73,13 @@ public class ConjGenerico<T extends Comparable<T>>
 		return this;
 	}
 
-	/* Testa se o conjunto está vazio. */
+	/* Testa se o conjunto est? vazio. */
 	public boolean vazio()
 	{
 		return prim == null;
 	}
 
-	/* Teste de pertinência. Usa fato de estar ordenado. */
+	/* Teste de pertin?ncia. Usa fato de estar ordenado. */
 	public boolean pertence(T valor)
 	{
 		Elo p;
@@ -91,8 +91,8 @@ public class ConjGenerico<T extends Comparable<T>>
 		return true;
 	}
 
-	/* Inserção de elemento no conjunto. Usa fato de estar ordenado.
-	   Retorna false se elemento já estava lá. */
+	/* Inser??o de elemento no conjunto. Usa fato de estar ordenado.
+	   Retorna false se elemento j? estava l?. */
 	public boolean insere(T valor)
 	{
 		Elo p = prim, ant = null;
@@ -117,8 +117,8 @@ public class ConjGenerico<T extends Comparable<T>>
 		return true;
 	}
 
-	/* Remoção de elemento do conjunto. Usa fato de estar ordenado.
-	   Retorna false se elemento não estava lá. */
+	/* Remo??o de elemento do conjunto. Usa fato de estar ordenado.
+	   Retorna false se elemento n?o estava l?. */
 	public boolean remove(T valor)
 	{
 		Elo p = prim, ant = null;
@@ -144,7 +144,7 @@ public class ConjGenerico<T extends Comparable<T>>
 		return true;
 	}
 
-	/* Método para união de conjuntos. Une conjunto com cj2 e retorna novo conjunto com a união. 
+	/* M?todo para uni?o de conjuntos. Une conjunto com cj2 e retorna novo conjunto com a uni?o. 
 	 * Usa fato de conjuntos estarem ordenados e percorre as listas em paralelo. */
 	public ConjGenerico<T> uniao(ConjGenerico<T> conj2)
 	{
@@ -177,7 +177,7 @@ public class ConjGenerico<T extends Comparable<T>>
 		return uniao;
 	}
 
-	/* Método para intersecao de conjuntos. Calcula intersecao do conjunto com cj2 e retorna novo conjunto com a intersecao. 
+	/* M?todo para intersecao de conjuntos. Calcula intersecao do conjunto com cj2 e retorna novo conjunto com a intersecao. 
 	 * Usa fato de conjuntos estarem ordenados e percorre as listas em paralelo. */
 	public ConjGenerico<T> intersecao(ConjGenerico<T> conj2)
 	{
@@ -236,6 +236,9 @@ public class ConjGenerico<T extends Comparable<T>>
 		System.out.println();
 	}
 
+	//Ex 02
+
+	//Ex 03
 	ConjGenerico<T> complementar(ConjGenerico<T> universo) {
 
 		Elo prim1 = this.prim;
@@ -243,11 +246,11 @@ public class ConjGenerico<T extends Comparable<T>>
 
 		ConjGenerico<T> comp = new ConjGenerico<>(); // para guardar o conjunto complementar
 
-		// loop que itera até o final do conjunto universo
+		// loop que itera at? o final do conjunto universo
 		while (prim2 != null) {
 			// se o elemento do conjunto universo for igual ao do conjunto 1...
 			if (prim2.dado.compareTo(prim1.dado) == 0) {
-				//...as heads de cada conjunto recebem o proximo elemento, caso o proximo elemento do conjunto 1 não seja nulo
+				//...as heads de cada conjunto recebem o proximo elemento, caso o proximo elemento do conjunto 1 n?o seja nulo
 				if (prim1.prox != null) {
 					prim2 = prim2.prox;
 					prim1 = prim1.prox;
@@ -255,8 +258,8 @@ public class ConjGenerico<T extends Comparable<T>>
 				} else { // ...a head do conjunto universo recebe o proximo elemento
 					prim2 = prim2.prox;
 				}
-			} else if (prim2.dado.compareTo(prim1.dado) != 0) { // especificar isso aqui é redundante
-				// se o elemento do conjunto universo for diferente do elemento do conjunto 1, ele é inserido
+			} else if (prim2.dado.compareTo(prim1.dado) != 0) { // especificar isso aqui ? redundante
+				// se o elemento do conjunto universo for diferente do elemento do conjunto 1, ele ? inserido
 				// no conjunto complementar.
 				// a head do conjunto universo recebe o proximo elemento desse mesmo conjunto
 				comp.insere(prim2.dado);
@@ -266,6 +269,27 @@ public class ConjGenerico<T extends Comparable<T>>
 		return comp;
 	}
 
+	//Ex 04
+	public boolean eSubconjunto(ConjGenerico<T> conj2) {
+		Elo p = this.prim;
+		Elo q = conj2.prim;
+
+		while (q != null) {
+			if (p.dado.compareTo(q.dado) == 0) {
+				if (p.prox != null) {
+					q = q.prox;
+					p = p.prox;
+				} else {
+					return true;
+				}
+			} else if (q.dado.compareTo(p.dado) != 0) {
+				q = q.prox;
+			}
+		}
+		return false;
+	}
+
+	//Ex 05
 	public ConjGenerico<T> diferenca(ConjGenerico<T> conj2) {
 		ConjGenerico<T> diferenca = new ConjGenerico<>();
 			Elo p = this.prim;
@@ -275,18 +299,18 @@ public class ConjGenerico<T extends Comparable<T>>
 
 			while (p != null && q != null) {
 				if (p.dado.compareTo(q.dado) == 0) {
-					//são iguais
+					//s?o iguais
 					p = p.prox;
 					q = q.prox;
 				} else if (p.dado.compareTo(q.dado) < 0) {
-					//será incluso na diferença
+					//ser? incluso na diferen?a
 					e1 = new Elo(p.dado);
 					p = p.prox;
 
 					if (ult == null) {
 						diferenca.prim = e1;
 					} else {
-						//o prim já está ocupado
+						//o prim j? est? ocupado
 						ult.prox = e1;
 					}
 					ult = e1;
@@ -334,7 +358,7 @@ public class ConjGenerico<T extends Comparable<T>>
 		System.out.println("Complementar de B:");
 		compB.imprime();
 
-		// interseção dos complementos de A e B
+		// interse??o dos complementos de A e B
 		intersec = compA.intersecao(compB);
 
 		return intersec;

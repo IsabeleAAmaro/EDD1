@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/EDD1.iml" filepath="$PROJECT_DIR$/.idea/EDD1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lista 01 - Pilha/Lista 01 - Pilha.iml" filepath="$PROJECT_DIR$/Lista 01 - Pilha/Lista 01 - Pilha.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lista 02 - Fila/Lista 02 - Fila.iml" filepath="$PROJECT_DIR$/Lista 02 - Fila/Lista 02 - Fila.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lista 04 - Listas encadeadas/Lista 04 - Listas encadeadas.iml" filepath="$PROJECT_DIR$/Lista 04 - Listas encadeadas/Lista 04 - Listas encadeadas.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lista 05 - Listas circulares e duplamente encadeadas/Lista 05 - Listas circulares e duplamente encadeadas.iml" filepath="$PROJECT_DIR$/Lista 05 - Listas circulares e duplamente encadeadas/Lista 05 - Listas circulares e duplamente encadeadas.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lista06/Lista06.iml" filepath="$PROJECT_DIR$/Lista06/Lista06.iml" />
+    </modules>
+  </component>
+</project>
