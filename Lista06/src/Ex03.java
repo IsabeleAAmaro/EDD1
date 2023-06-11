@@ -1,4 +1,12 @@
 public class Ex03 {
+
+    /*
+    3) Desenvolva um método que receba um conjunto universo como parâmetro e calcule o
+    complementar do conjunto corrente em relação a tal universo. Se o conjunto corrente
+    possuir elementos de fora do conjunto universo informado, o método deve lançar uma
+    exceção.
+     */
+
     public static void main(String[] args) {
         ConjGenerico<Integer> conj1 = new ConjGenerico<>();
         ConjGenerico<Integer> conj2;

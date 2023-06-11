@@ -268,6 +268,11 @@ public class ConjGenerico<T extends Comparable<T>>
 				// se o elemento do conjunto universo for diferente do elemento do conjunto 1, ele ? inserido
 				// no conjunto complementar.
 				// a head do conjunto universo recebe o proximo elemento desse mesmo conjunto
+
+				//Exceção que será lançada caso o conjunto original contenha elementos de fora do universo
+				if (!this.pertence(prim2.dado)) {
+					throw new UnsupportedOperationException("Elemento fora do conjunto universo: " + prim2.dado);
+				}
 				comp.insere(prim2.dado);
 				prim2 = prim2.prox;
 			}
