@@ -1,9 +1,14 @@
 public class Ex04 {
+    /*
+    4) Implemente um método que receba um conjunto conj2 e retorne true se o conjunto
+    corrente, para o qual método é chamado, é subconjunto de conj2 e false, caso contrário.
+    O método possui o protótipo abaixo:
+     */
+
     public static void main(String[] args) {
         ConjGenerico<Integer> c1 = new ConjGenerico<>();
         ConjGenerico<Integer> c2 = new ConjGenerico<>();
 
-        //tá certo isso? é basicamente checando se existe interseção??
 
         c1.insere(4);
         c1.insere(6);

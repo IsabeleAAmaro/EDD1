@@ -1,4 +1,8 @@
 public class Ex06 {
+    /*
+    6) Implemente o método do Exercício 2 de maneira recursiva
+     */
+
     public static void main(String[] args) {
         ConjGenerico<Integer> c1 = new ConjGenerico<>();
         ConjGenerico<Integer> c2 = new ConjGenerico<>();

@@ -1,4 +1,12 @@
 public class Ex07 {
+    /*
+    7) Dados dois conjuntos “A” e “B” sobre um determinado universo, a Segunda Lei De
+    Morgan diz que (A U B)c → Ac B⋂ C. Dessa maneira, pede-se que seja feito um método
+    estático que, dado o conjunto universo universo e dados dois conjuntos conj1 e conj2
+    sobre esse universo, aplique a Segunda Lei De Morgan a esses, retornando a interseção do
+    complemento de conj1 e do complemento de conj2. O método possui a seguinte
+    assinatura:
+     */
     public static void main(String[] args) {
 
         ConjGenerico<Integer> c1 = new ConjGenerico<>();

@@ -1,4 +1,10 @@
 public class Ex05 {
+    /*
+    5) Implemente um método que receba um conjunto conj2 e obtenha o conjunto diferença
+    entre o conjunto corrente e conj2. O método deve retornar o conjunto resultante e deve
+    seguir o protótipo abaixo:
+     */
+
     public static void main(String[] args) {
 
         ConjGenerico<Integer> c1 = new ConjGenerico<>();
