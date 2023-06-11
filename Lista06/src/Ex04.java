@@ -5,6 +5,8 @@ public class Ex04 {
     O método possui o protótipo abaixo:
      */
 
+    //Complexidade do eSubconjunto: O(n)
+
     public static void main(String[] args) {
         ConjGenerico<Integer> c1 = new ConjGenerico<>();
         ConjGenerico<Integer> c2 = new ConjGenerico<>();

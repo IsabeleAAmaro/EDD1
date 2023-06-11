@@ -5,6 +5,8 @@ public class Ex05 {
     seguir o protótipo abaixo:
      */
 
+    //Complexidade do diferença: O(n + m)
+
     public static void main(String[] args) {
 
         ConjGenerico<Integer> c1 = new ConjGenerico<>();

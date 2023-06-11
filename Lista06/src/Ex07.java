@@ -7,6 +7,10 @@ public class Ex07 {
     complemento de conj1 e do complemento de conj2. O método possui a seguinte
     assinatura:
      */
+
+    //Complexidade do calculaDeMorgan: O(n)
+    //Complexidade do intersecao: O(N +M)
+    //Complexidade do complementar: O(n)
     public static void main(String[] args) {
 
         ConjGenerico<Integer> c1 = new ConjGenerico<>();

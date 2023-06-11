@@ -7,6 +7,8 @@ public class Ex02 {
     método é o seguinte:
      */
 
+    //Complexidade do eIgual: O(n)
+
     public static void main(String[] args) {
         ConjGenerico<Integer> c1 = new ConjGenerico<>();
         ConjGenerico<Integer> c2 = new ConjGenerico<>();

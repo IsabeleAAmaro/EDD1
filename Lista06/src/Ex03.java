@@ -7,18 +7,22 @@ public class Ex03 {
     exceção.
      */
 
+    //Complexidade do complementar: O(n)
+
     public static void main(String[] args) {
         ConjGenerico<Integer> conj1 = new ConjGenerico<>();
         ConjGenerico<Integer> conj2;
         ConjGenerico<Integer> conjUniverso = new ConjGenerico<>();
 
-        //conj1.insere(1);
         conj1.insere(3);
         conj1.insere(4);
         conj1.insere(5);
         conj1.insere(6);
         conj1.insere(8);
         conj1.insere(9);
+        //deveria dar exceção por causa desse 15
+        conj1.insere(15);
+
 
         System.out.println("Conjunto 1: ");
         conj1.imprime();
@@ -40,6 +44,5 @@ public class Ex03 {
 
         System.out.println("Complementar do Conjunto 1:");
         conj2.imprime();
-
     }
 }

@@ -285,10 +285,11 @@ public class ConjGenerico<T extends Comparable<T>>
 				// a head do conjunto universo recebe o proximo elemento desse mesmo conjunto
 
 				//Exceção que será lançada caso o conjunto original contenha elementos de fora do universo
-				if (!this.pertence(prim2.dado)) {
-					throw new UnsupportedOperationException("Elemento fora do conjunto universo: " + prim2.dado);
+				if (pertence(prim1.dado)) {
+					comp.insere(prim2.dado);
+				} else {
+					throw new IllegalStateException("O conjunto original contém elementos de fora do universo");
 				}
-				comp.insere(prim2.dado);
 				prim2 = prim2.prox;
 			}
 		}
@@ -378,12 +379,9 @@ public class ConjGenerico<T extends Comparable<T>>
 	}
 
 	public static ConjGenerico<Integer> calculaDeMorgan(ConjGenerico<Integer> A, ConjGenerico<Integer> B, ConjGenerico<Integer> universo) {
-		ConjGenerico<Integer> compA = new ConjGenerico<>();
-		ConjGenerico<Integer> compB = new ConjGenerico<>();
-		ConjGenerico<Integer> intersec = new ConjGenerico<>();
-
-		//Elo prim1 = A.prim;
-		//Elo prim2 = universo.prim;
+		ConjGenerico<Integer> compA;
+		ConjGenerico<Integer> compB;
+		ConjGenerico<Integer> intersec;
 
 		// complemento de A
 		compA = A.complementar(universo);
