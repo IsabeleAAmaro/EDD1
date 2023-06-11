@@ -1,15 +1,16 @@
 public class ConjGenerico<T extends Comparable<T>>
 {
 	private Elo prim;  /* Refer?ncia para primeiro elemento. */
+	private T maior;
 
 	/* Classe auxiliar para guardar cada elemento do conjunto. */
 	private class Elo
-	{                 
+	{
 		T dado;
 		Elo prox;
 
 		public Elo()
-		{ 
+		{
 			prox = null;
 		}
 
@@ -20,7 +21,7 @@ public class ConjGenerico<T extends Comparable<T>>
 		}
 
 		public Elo(T elem, Elo proxElem)
-		{ 
+		{
 			dado = elem;
 			prox = proxElem;
 		}
@@ -38,16 +39,16 @@ public class ConjGenerico<T extends Comparable<T>>
 		Elo ult = null, q;
 
 		prim = null;
-		
+
 		for (Elo p = conj2.prim; p != null; p = p.prox)
 		{
 			q = new Elo(p.dado);
-			
+
 			if (ult == null)
 				prim = q;
 			else
 				ult.prox = q;
-			
+
 			ult = q;
 		}
 	}
@@ -69,7 +70,7 @@ public class ConjGenerico<T extends Comparable<T>>
 			apaga();
 			copia(conj2);
 		}
-		
+
 		return this;
 	}
 
@@ -83,10 +84,10 @@ public class ConjGenerico<T extends Comparable<T>>
 	public boolean pertence(T valor)
 	{
 		Elo p;
-		
+
 		for (p = prim; ((p != null) && (p.dado.compareTo(valor) < 0)); p = p.prox);
 
-		if ((p == null) || (p.dado.compareTo(valor) > 0)) return false;	  
+		if ((p == null) || (p.dado.compareTo(valor) > 0)) return false;
 
 		return true;
 	}
@@ -101,19 +102,24 @@ public class ConjGenerico<T extends Comparable<T>>
 		{
 			if (p.dado.compareTo(valor) == 0) return false;
 			if (p.dado.compareTo(valor) > 0) break;
-			
+
 			ant = p;
 		}
-		
+
 		Elo q = new Elo(valor);
-		
-		if (p == prim) 
+
+		if (p == prim)
 			prim = q;
 		else
 			ant.prox = q;
-		
+
 		q.prox = p;
-		
+
+		//Método adicionado depois da questão 1
+		if (maior == null || valor.compareTo(maior) > 0) {
+			maior = valor;
+		}
+
 		return true;
 	}
 
@@ -126,31 +132,31 @@ public class ConjGenerico<T extends Comparable<T>>
 		for (p = prim; (p != null); p = p.prox)
 		{
 			if (p.dado.compareTo(valor) > 0) return false;
-			if (p.dado.compareTo(valor) == 0) break;	 
-			
+			if (p.dado.compareTo(valor) == 0) break;
+
 			ant = p;
 		}
-		
+
 		if (p == null)
 			return false;
-		
-		if (p == prim) 
+
+		if (p == prim)
 			prim = prim.prox;
 		else
 			ant.prox = p.prox;
 
 		p = null;
-		
+
 		return true;
 	}
 
-	/* M?todo para uni?o de conjuntos. Une conjunto com cj2 e retorna novo conjunto com a uni?o. 
+	/* M?todo para uni?o de conjuntos. Une conjunto com cj2 e retorna novo conjunto com a uni?o.
 	 * Usa fato de conjuntos estarem ordenados e percorre as listas em paralelo. */
 	public ConjGenerico<T> uniao(ConjGenerico<T> conj2)
 	{
 		Elo q, p1 = prim, p2 = conj2.prim, ult = null;
-		ConjGenerico<T> uniao = new ConjGenerico<T>(); 
-		
+		ConjGenerico<T> uniao = new ConjGenerico<T>();
+
 		while ( (p1 != null) || (p2 != null) )
 		{
 			if ( (p1 != null) && ( (p2 == null) || (p1.dado.compareTo(p2.dado) < 0)))
@@ -164,20 +170,20 @@ public class ConjGenerico<T extends Comparable<T>>
 				if ((p1 != null) && (p1.dado.compareTo(p2.dado) == 0))
 					p1 = p1.prox;
 				p2 = p2.prox;
-			} 
+			}
 
-			if (ult == null) 
+			if (ult == null)
 				uniao.prim = q;
 			else
 				ult.prox = q;
-			
+
 			ult = q;
 		}
-		
+
 		return uniao;
 	}
 
-	/* M?todo para intersecao de conjuntos. Calcula intersecao do conjunto com cj2 e retorna novo conjunto com a intersecao. 
+	/* M?todo para intersecao de conjuntos. Calcula intersecao do conjunto com cj2 e retorna novo conjunto com a intersecao.
 	 * Usa fato de conjuntos estarem ordenados e percorre as listas em paralelo. */
 	public ConjGenerico<T> intersecao(ConjGenerico<T> conj2)
 	{
@@ -221,7 +227,7 @@ public class ConjGenerico<T extends Comparable<T>>
 
 		for(p = prim; p != null; p = p.prox)
 			tam++;
-		
+
 		return tam;
 	}
 
@@ -229,10 +235,10 @@ public class ConjGenerico<T extends Comparable<T>>
 	public void imprime()
 	{
 		Elo p;
-		
+
 		for(p = prim; p != null; p = p.prox)
 			System.out.print(p.dado + " ");
-		
+
 		System.out.println();
 	}
 
@@ -287,6 +293,19 @@ public class ConjGenerico<T extends Comparable<T>>
 			}
 		}
 		return false;
+	}
+
+	//Ex 01
+	public T getMenor() {
+		if(prim == null) {
+			System.out.println("Conjunto vazio!");
+		}
+
+		return prim.dado;
+	}
+
+	public T getMaior() {
+		return maior;
 	}
 
 	//Ex 05
