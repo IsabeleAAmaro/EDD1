@@ -243,6 +243,21 @@ public class ConjGenerico<T extends Comparable<T>>
 	}
 
 	//Ex 02
+	public boolean eIgual(ConjGenerico<T> conj2) {
+		Elo p1 = this.prim;
+		Elo p2 = conj2.prim;
+
+		while (p1 != null && p2 != null) {
+			if (!p1.dado.equals(p2.dado)) {
+				return false;
+			}
+			p1 = p1.prox;
+			p2 = p2.prox;
+		}
+
+		return p1 == null && p2 == null;
+	}
+
 
 	//Ex 03
 	ConjGenerico<T> complementar(ConjGenerico<T> universo) {
