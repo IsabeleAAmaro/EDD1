@@ -11,7 +11,6 @@ public class Ex04 {
         ConjGenerico<Integer> c1 = new ConjGenerico<>();
         ConjGenerico<Integer> c2 = new ConjGenerico<>();
 
-
         c1.insere(4);
         c1.insere(6);
         c1.insere(9);
@@ -27,7 +26,7 @@ public class Ex04 {
         c2.insere(11);
 
         if(c1.eSubconjunto(c2)) {
-            System.out.println("eh subconjunto");
+            System.out.println("É sim subconjunto");
         }else{
             System.out.println("Não é");
         }

@@ -20,9 +20,6 @@ public class Ex03 {
         conj1.insere(6);
         conj1.insere(8);
         conj1.insere(9);
-        //deveria dar exceção por causa desse 15
-        conj1.insere(15);
-
 
         System.out.println("Conjunto 1: ");
         conj1.imprime();

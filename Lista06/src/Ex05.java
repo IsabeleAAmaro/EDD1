@@ -27,6 +27,7 @@ public class Ex05 {
         c2.insere(6);
         c2.insere(9);
 
+        System.out.println("Diferença entre conjuntos: ");
         dif = c1.diferenca(c2);
         dif.imprime();
     }
