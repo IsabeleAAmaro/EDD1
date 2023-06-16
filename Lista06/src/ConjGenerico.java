@@ -265,26 +265,18 @@ public class ConjGenerico<T extends Comparable<T>>
 		Elo prim1 = this.prim;
 		Elo prim2 = universo.prim;
 
-		ConjGenerico<T> comp = new ConjGenerico<>(); // para guardar o conjunto complementar
+		ConjGenerico<T> comp = new ConjGenerico<>();
 
-		// loop que itera at? o final do conjunto universo
 		while (prim2 != null) {
-			// se o elemento do conjunto universo for igual ao do conjunto 1...
 			if (prim2.dado.compareTo(prim1.dado) == 0) {
-				//...as heads de cada conjunto recebem o proximo elemento, caso o proximo elemento do conjunto 1 n?o seja nulo
 				if (prim1.prox != null) {
 					prim2 = prim2.prox;
 					prim1 = prim1.prox;
 
-				} else { // ...a head do conjunto universo recebe o proximo elemento
+				} else {
 					prim2 = prim2.prox;
 				}
-			} else if (prim2.dado.compareTo(prim1.dado) != 0) { // especificar isso aqui ? redundante
-				// se o elemento do conjunto universo for diferente do elemento do conjunto 1, ele ? inserido
-				// no conjunto complementar.
-				// a head do conjunto universo recebe o proximo elemento desse mesmo conjunto
-
-				//Exceção que será lançada caso o conjunto original contenha elementos de fora do universo
+			} else if (prim2.dado.compareTo(prim1.dado) != 0) {
 				if (pertence(prim1.dado)) {
 					comp.insere(prim2.dado);
 				} else {
@@ -339,18 +331,15 @@ public class ConjGenerico<T extends Comparable<T>>
 
 			while (p != null && q != null) {
 				if (p.dado.compareTo(q.dado) == 0) {
-					//s?o iguais
 					p = p.prox;
 					q = q.prox;
 				} else if (p.dado.compareTo(q.dado) < 0) {
-					//ser? incluso na diferen?a
 					e1 = new Elo(p.dado);
 					p = p.prox;
 
 					if (ult == null) {
 						diferenca.prim = e1;
 					} else {
-						//o prim j? est? ocupado
 						ult.prox = e1;
 					}
 					ult = e1;
