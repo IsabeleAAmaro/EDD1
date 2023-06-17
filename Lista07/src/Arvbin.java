@@ -1,5 +1,7 @@
 import java.util.Deque;
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Arvbin<T extends Comparable<T>>
 {
@@ -274,6 +276,115 @@ public class Arvbin<T extends Comparable<T>>
 		}
 		return teste;	// Se nada do loop entrar - trava
 
+	}
+
+	//Questão 4:
+	public Arvbin<T> tornaRaiz(T valor) {
+		Arvbin<T> no = busca(valor);
+		Arvbin<T> aux = new Arvbin<T>(valor);
+		Queue<Arvbin<T>> novaFila = new LinkedList<>();
+
+		novaFila.add(this);
+		aux.defineVal(this.retornaVal());
+		this.defineVal(no.retornaVal());
+
+		Arvbin<T> temp = null;
+
+		while (!novaFila.isEmpty()) {
+			temp = novaFila.peek(); // pego sem remover o valor
+			novaFila.remove();
+
+			if (temp.retornaEsq() == no) {
+				temp.defineEsq(new Arvbin<T>(aux.retornaVal()));
+			}
+			if (temp.retornaDir() == no) {
+				temp.defineDir(new Arvbin<T>(aux.retornaVal()));
+			}
+
+			if (temp.retornaEsq() != null) {
+				novaFila.add(temp.retornaEsq());
+			}
+
+			if (temp.retornaDir() != null) {
+				novaFila.add(temp.retornaDir());
+			}
+		}
+
+		return this;
+	}
+
+	//Questão 5:
+	public Arvbin<T> delete(T valor) {
+		if (this.val == null)
+			return this;
+
+		if (this.esq == null && this.dir == null) { // Caso nao tenha filhos
+			if (this.val.equals(valor)) {
+				this.val = null;
+			}
+			return this;
+		}
+
+		Queue<Arvbin<T>> fila = new LinkedList<>();
+		fila.add(this);
+		Arvbin<T> temp = null, chave = null;
+
+		while (!fila.isEmpty()) {
+			temp = fila.peek();
+			fila.remove();
+
+			if (temp.val.equals(valor))
+				chave = temp;
+
+			if (temp.esq != null)
+				fila.add(temp.esq);
+
+			if (temp.dir != null)
+				fila.add(temp.dir);
+		}
+
+		if (chave != null) {
+			T x = temp.val;
+			deletaAux(temp);
+			chave.val = x;
+		}
+
+		return this;
+	}
+
+	private void deletaAux(Arvbin<T> paraDeletar) {
+		Queue<Arvbin<T>> novaFila = new LinkedList<>();
+		novaFila.add(this);
+
+		Arvbin<T> temp = null;
+
+		while (!novaFila.isEmpty()) {
+			temp = novaFila.peek();
+			novaFila.remove();
+
+			if (temp == paraDeletar) {
+				temp = null;
+				return;
+			}
+
+			if (temp.dir != null) {
+				if (temp.dir == paraDeletar) {
+					temp.dir = null;
+					return;
+				} else {
+					novaFila.add(temp.dir);
+				}
+			}
+
+			if (temp.esq != null) {
+				if (temp.esq == paraDeletar) {
+					temp.esq = null;
+					return;
+				} else {
+					novaFila.add(temp.esq);
+				}
+			}
+		}
 	}
 
 	/* Resolu��o da quest�o 1 dispon�vel no moodle. */

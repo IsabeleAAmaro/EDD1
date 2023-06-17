@@ -6,11 +6,11 @@ public class Ex02 {
 
     public static void main(String[] args) {
 
-        Arvbin<Integer> no1 = new Arvbin(5);
-        Arvbin<Integer> no2 = new Arvbin(10);
-        Arvbin<Integer> no3 = new Arvbin(3);
-        Arvbin<Integer> no4 = new Arvbin(11);
-        Arvbin<Integer> no5 = new Arvbin(45);
+        Arvbin<Integer> no1 = new Arvbin<>(5);
+        Arvbin<Integer> no2 = new Arvbin<>(10);
+        Arvbin<Integer> no3 = new Arvbin<>(3);
+        Arvbin<Integer> no4 = new Arvbin<>(11);
+        Arvbin<Integer> no5 = new Arvbin<>(45);
 
         no2.defineEsq(no4);
         no2.defineDir(no5);
