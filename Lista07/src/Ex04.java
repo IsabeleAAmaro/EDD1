@@ -11,11 +11,11 @@ public class Ex04 {
     //Complexidade do auxDelete: O(n)
 
     public static void main(String[] args) {
-        Arvbin<Integer> no1 = new Arvbin<>(5);
-        Arvbin<Integer> no2 = new Arvbin<>(10);
-        Arvbin<Integer> no3 = new Arvbin<>(3);
-        Arvbin<Integer> no4 = new Arvbin<>(11);
-        Arvbin<Integer> no5 = new Arvbin<>(32);
+        Arvbin<Integer> no1 = new Arvbin<>(5),
+        no2 = new Arvbin<>(10),
+        no3 = new Arvbin<>(3),
+        no4 = new Arvbin<>(11),
+        no5 = new Arvbin<>(32);
 
         no2.defineEsq(no4);
         no2.defineDir(no5);
@@ -25,12 +25,12 @@ public class Ex04 {
         System.out.println("Árvore Originalmente:");
         no1.mostra();
 
-        no1.delete(19); // Como o valor não existe na árvore, imprime ela igual antes
-        System.out.println("\n\nArvore depois de deletar valor");
+        no1.delete(11);
+        System.out.println("\nArvore depois de deletar valor");
         no1.mostra();
 
-        no1.delete(3);  // Tirou o 3 na impressão
-        System.out.println("\n\nArvore depois de deletar valor");
+        no1.delete(3);
+        System.out.println("\nArvore depois de deletar valor");
         no1.mostra();
     }
 }

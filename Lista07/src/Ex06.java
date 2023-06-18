@@ -12,12 +12,12 @@ public class Ex06 {
     public static void main(String[] args) {
 
         Arvbin<Integer> n1 = new Arvbin<>(2),
-                n2 = new Arvbin<>(1),
-                n3 = new Arvbin<>(6),
-                n4 = new Arvbin<>(4),
-                n5 = new Arvbin<>(3),
-                n6 = new Arvbin<>(7),
-                n7 = new Arvbin<>(5);
+        n2 = new Arvbin<>(1),
+        n3 = new Arvbin<>(6),
+        n4 = new Arvbin<>(4),
+        n5 = new Arvbin<>(3),
+        n6 = new Arvbin<>(7),
+        n7 = new Arvbin<>(5);
 
         n2.defineEsq(n1);
         n2.defineDir(n5);

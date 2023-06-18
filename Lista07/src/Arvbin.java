@@ -430,11 +430,7 @@ public class Arvbin<T extends Comparable<T>> {
 
 	// Questão 03:
 	public boolean eSimilar(Arvbin<T> arvore) {
-		Boolean teste = true;
-
-		if (!teste) {
-			return false;
-		}
+		boolean teste = true;
 
 		if (arvore.dir == null && arvore.esq == null && this.dir == null && this.esq == null) {
 			return true;
@@ -445,13 +441,6 @@ public class Arvbin<T extends Comparable<T>> {
 		}
 		else {
 			return false;
-		}
-
-		if (teste){
-			System.out.println("É similar");
-		}
-		else{
-			System.out.println("Não é similar");
 		}
 		return teste;
 	}
@@ -565,6 +554,7 @@ public class Arvbin<T extends Comparable<T>> {
 		}
 	}
 
+	//Questão 6:
 	public boolean eBalanceada() {
 		return verificaBalanceamento(this) != -1;
 	}

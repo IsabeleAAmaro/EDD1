@@ -13,24 +13,21 @@ public class Ex01 {
 
     public static void main(String[] args) {
 
-        Arvbin<Integer> no1 = new Arvbin<>(9);
-        Arvbin<Integer> no2 = new Arvbin<>(1);
-        Arvbin<Integer> no3 = new Arvbin<>(55);
+        Arvbin<Integer> no1 = new Arvbin<>(9),
+        no2 = new Arvbin<>(1),
+        no3 = new Arvbin<>(55);
 
         no1.defineEsq(no2);
         no1.defineDir(no3);
 
-        System.out.println("Pré ordem");
+        System.out.println("\nPré ordem: ");
         no1.imprimePreOrdem();
-        System.out.println();
 
-        System.out.println("Pós ordem");
+        System.out.println("\nPós ordem: ");
         no1.imprimePosOrdem();
-        System.out.println();
 
-        System.out.println("Em ordem");
+        System.out.println("\nEm ordem: ");
         no1.imprimeEmOrdem();
-        
     }
     
 }

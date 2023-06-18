@@ -14,11 +14,11 @@ public class Ex03 {
 
     public static void main(String[] args) {
 
-        Arvbin<Integer> no1 = new Arvbin<>(5);
-        Arvbin<Integer> no2 = new Arvbin<>(10);
-        Arvbin<Integer> no3 = new Arvbin<>(3);
-        Arvbin<Integer> no4 = new Arvbin<>(11);
-        Arvbin<Integer> no5 = new Arvbin<>(32);
+        Arvbin<Integer> no1 = new Arvbin<>(5),
+        no2 = new Arvbin<>(10),
+        no3 = new Arvbin<>(3),
+        no4 = new Arvbin<>(11),
+        no5 = new Arvbin<>(32);
 
         no2.defineEsq(no4);
         no2.defineDir(no5);
@@ -27,12 +27,21 @@ public class Ex03 {
         no1.defineEsq(no2);
         no1.defineDir(no3);
 
-        System.out.println("Árvore:");  // Imprime a árvore
+        System.out.println("Árvore:");
         no1.imprimeEmOrdem();
 
-        System.out.println("\n\nNo da esquerda é igual o nó da raiz?");
-        System.out.println(no2.eSimilar(no1));
+        System.out.println("\nNo da esquerda é igual o nó da raiz?");
+        if (no2.eSimilar(no1)){
+            System.out.println("É similar");
+        }else{
+            System.out.println("Não é similar");
+        }
+
         System.out.println("\nNo da esquerda é igual o nó da direita?");
-        System.out.println(no2.eSimilar(no3));
+        if (no2.eSimilar(no3)){
+            System.out.println("É similar");
+        }else{
+            System.out.println("Não é similar");
+        }
     }
 }

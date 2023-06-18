@@ -12,33 +12,31 @@ public class Ex02 {
 
     public static void main(String[] args) {
 
-        Arvbin<Integer> no1 = new Arvbin<>(5);
-        Arvbin<Integer> no2 = new Arvbin<>(10);
-        Arvbin<Integer> no3 = new Arvbin<>(3);
-        Arvbin<Integer> no4 = new Arvbin<>(11);
-        Arvbin<Integer> no5 = new Arvbin<>(45);
+        Arvbin<Integer> no1 = new Arvbin<>(5),
+        no2 = new Arvbin<>(10),
+        no3 = new Arvbin<>(3),
+        no4 = new Arvbin<>(11),
+        no5 = new Arvbin<>(45);
 
         no2.defineEsq(no4);
         no2.defineDir(no5);
         no1.defineEsq(no2);
         no1.defineDir(no3);
 
-        System.out.println("Arvore:");  // Mostra árvore
+        System.out.println("Árvore:");
         no1.imprimeEmOrdem();
 
-        System.out.println("\n\nSoma das subs arvores:"); // Mostra a soma
+        System.out.println("\nSoma das subs árvores:");
         Integer soma = Arvbin.retornaSomaSubArvore(no1);
         System.out.println(soma);
 
-        System.out.println("Soma das subs arvores esquerda:");
+        System.out.println("Soma das subs árvores da esquerda:");
         soma = Arvbin.retornaSomaSubArvore(no2);
         System.out.println(soma);
 
-        System.out.println("Soma das subs arvores direita:");
+        System.out.println("Soma das subs árvores da direita:");
         soma = Arvbin.retornaSomaSubArvore(no3);
         System.out.println(soma);
-
-
 
     }
 }
