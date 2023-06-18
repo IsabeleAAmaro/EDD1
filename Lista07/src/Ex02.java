@@ -1,8 +1,14 @@
 public class Ex02 {
 
     /*
-
+    2) Implemente um método que busque por um parâmetro Arvbin<Integer> no e, a partir
+    desse no, retorne a soma dos valores armazenados nos nós da subárvore enraizada em no.
+    O método deve possuir o protótipo abaixo:
+    public static Integer retornaSomaSubArvore(Arvbin<Integer> no);
      */
+
+    //Complexidade do retornaSomaSubArvore: O(n)
+    //Complexidade do imprimeEmOrdem: O(n)
 
     public static void main(String[] args) {
 
@@ -16,7 +22,6 @@ public class Ex02 {
         no2.defineDir(no5);
         no1.defineEsq(no2);
         no1.defineDir(no3);
-        // no1.defineDir();
 
         System.out.println("Arvore:");  // Mostra árvore
         no1.imprimeEmOrdem();

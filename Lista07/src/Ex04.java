@@ -1,5 +1,15 @@
 public class Ex04 {
 
+    /*
+    4) Implemente um método que recebe um parâmetro T valor e apaga o nó em que esse
+    valor está armazenado. Esse método deve realizar um tratamento para que os demais nós
+    da árvore se mantenham (isto é, não sejam perdidos) e deve possuir o seguinte protótipo:
+    public Arvbin<T> delete(T valor);
+     */
+
+    //Complexidade de delete: O(n)
+    //Complexidade do auxDelete: O(n)
+
     public static void main(String[] args) {
         Arvbin<Integer> no1 = new Arvbin<>(5);
         Arvbin<Integer> no2 = new Arvbin<>(10);

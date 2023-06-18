@@ -7,6 +7,10 @@ public class Ex01 {
     imprimeEmOrdem(), respectivamente
      */
 
+    //Complexidade do imprimePreOrdem: O(n)
+    //Complexidade do imprimePosOrdem: O(n)
+    //Complexidade do imprimeEmOrdem: O(n)
+
     public static void main(String[] args) {
 
         Arvbin<Integer> no1 = new Arvbin<>(9);

@@ -1,5 +1,14 @@
 public class Ex06 {
 
+    /*
+    6) Implemente um método que verifique de maneira eficiente se uma árvore binária é
+    balanceada, retornando true se a árvore for balanceada e false, caso contrário. Uma
+    árvore é balanceada se, e somente se, para todo nó, a diferença absoluta entre as alturas
+    das subárvores esquerda e direita corresponder a 0 ou a 1.
+     */
+
+    //Complexidade do eBalanceada: O(n)
+
     public static void main(String[] args) {
 
         Arvbin<Integer> n1 = new Arvbin<>(2),

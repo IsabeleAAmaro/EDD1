@@ -189,232 +189,6 @@ public class Arvbin<T extends Comparable<T>> {
 		return acumulado;
 	}
 
-	// -------------------------------------------------------------------------------
-
-	//Questão 01:
-	public void imprimePreOrdem() {
-		System.out.print("(" + val); // Mostra o valor antes dos filhos
-		if (esq != null) {
-			esq.imprimePreOrdem();
-		}
-		if (dir != null) {
-			dir.imprimePreOrdem();
-		}
-		System.out.print(")");
-
-	}
-
-	public void imprimePosOrdem() {
-		System.out.print("(");
-		if (esq != null) {
-			esq.imprimePosOrdem();
-		}
-		if (dir != null) {
-			dir.imprimePosOrdem();
-		}
-		System.out.print(val + ")"); // Mostra o valor depois dos filhos
-
-	}
-
-	public void imprimeEmOrdem() {
-		System.out.print("(");
-		if (esq != null)
-			esq.imprimeEmOrdem();
-		System.out.print(val); // Mostra o valor no meio dos filhos
-		if (dir != null)
-			dir.imprimeEmOrdem();
-		System.out.print(")");
-
-	}
-
-	// Questão 02:
-	public static Integer retornaSomaSubArvore(Arvbin<Integer> no) {
-
-		Integer soma = 0; // soma durante a recursao
-		soma += no.val;
-
-		if (no.esq != null) {
-			soma += retornaSomaSubArvore(no.esq); // Soma No da esquerda
-
-		}
-		if (no.dir != null) {
-			soma += retornaSomaSubArvore(no.dir); // Soma No da Direita
-
-		}
-		return soma;
-	}
-
-	// Questão 03:
-	public boolean eSimilar(Arvbin<T> arvore) {
-		Boolean teste = true;
-
-		if (!teste) {
-			//System.out.println("Não é similar");  -> Mensagem fica repetindo
-			return false;
-		}
-
-		if (arvore.dir == null && arvore.esq == null && this.dir == null && this.esq == null) {	// Se for similar - toda vazia
-			//System.out.println("É similar");
-			return true;
-		}
-		else if (arvore.dir != null && arvore.esq != null && this.dir != null && this.esq != null) {	// COndição: não são nulos
-			teste = this.dir.eSimilar(arvore.dir);
-			teste = this.esq.eSimilar(arvore.esq);
-		}
-		else {
-			//System.out.println("Não é similar");	// Não é similar se chegar aqui!!
-			return false;
-		}
-
-		// Imprime aviso
-		if (teste){
-			System.out.println("É similar");
-		}
-		else{
-			System.out.println("Não é similar");
-		}
-		return teste;	// Se nada do loop entrar - trava
-
-	}
-
-	//Questão 4:
-	public Arvbin<T> tornaRaiz(T valor) {
-		Arvbin<T> no = busca(valor);
-		Arvbin<T> aux = new Arvbin<T>(valor);
-		Queue<Arvbin<T>> novaFila = new LinkedList<>();
-
-		novaFila.add(this);
-		aux.defineVal(this.retornaVal());
-		this.defineVal(no.retornaVal());
-
-		Arvbin<T> temp = null;
-
-		while (!novaFila.isEmpty()) {
-			temp = novaFila.peek(); // pego sem remover o valor
-			novaFila.remove();
-
-			if (temp.retornaEsq() == no) {
-				temp.defineEsq(new Arvbin<T>(aux.retornaVal()));
-			}
-			if (temp.retornaDir() == no) {
-				temp.defineDir(new Arvbin<T>(aux.retornaVal()));
-			}
-
-			if (temp.retornaEsq() != null) {
-				novaFila.add(temp.retornaEsq());
-			}
-
-			if (temp.retornaDir() != null) {
-				novaFila.add(temp.retornaDir());
-			}
-		}
-
-		return this;
-	}
-
-	//Questão 5:
-	public Arvbin<T> delete(T valor) {
-		if (this.val == null)
-			return this;
-
-		if (this.esq == null && this.dir == null) { // Caso nao tenha filhos
-			if (this.val.equals(valor)) {
-				this.val = null;
-			}
-			return this;
-		}
-
-		Queue<Arvbin<T>> fila = new LinkedList<>();
-		fila.add(this);
-		Arvbin<T> temp = null, chave = null;
-
-		while (!fila.isEmpty()) {
-			temp = fila.peek();
-			fila.remove();
-
-			if (temp.val.equals(valor))
-				chave = temp;
-
-			if (temp.esq != null)
-				fila.add(temp.esq);
-
-			if (temp.dir != null)
-				fila.add(temp.dir);
-		}
-
-		if (chave != null) {
-			T x = temp.val;
-			deletaAux(temp);
-			chave.val = x;
-		}
-
-		return this;
-	}
-
-	//Questão 6: TESTAR MAIS
-	public boolean eBalanceada() {
-		return verificaBalanceamento(this) != -1;
-	}
-
-	private int verificaBalanceamento(Arvbin<T> no) {
-		if (no == null) {
-			return 0;
-		}
-
-		int alturaEsq = verificaBalanceamento(no.retornaEsq());
-		if (alturaEsq == -1) {
-			return -1;
-		}
-
-		int alturaDir = verificaBalanceamento(no.retornaDir());
-		if (alturaDir == -1) {
-			return -1;
-		}
-
-		int diferencaAltura = Math.abs(alturaEsq - alturaDir);
-		if (diferencaAltura > 1) {
-			return -1;
-		}
-
-		return Math.max(alturaEsq, alturaDir) + 1;
-	}
-
-
-	private void deletaAux(Arvbin<T> paraDeletar) {
-		Queue<Arvbin<T>> novaFila = new LinkedList<>();
-		novaFila.add(this);
-
-		Arvbin<T> temp = null;
-
-		while (!novaFila.isEmpty()) {
-			temp = novaFila.peek();
-			novaFila.remove();
-
-			if (temp == paraDeletar) {
-				temp = null;
-				return;
-			}
-
-			if (temp.dir != null) {
-				if (temp.dir == paraDeletar) {
-					temp.dir = null;
-					return;
-				} else {
-					novaFila.add(temp.dir);
-				}
-			}
-
-			if (temp.esq != null) {
-				if (temp.esq == paraDeletar) {
-					temp.esq = null;
-					return;
-				} else {
-					novaFila.add(temp.esq);
-				}
-			}
-		}
-	}
-
 	/* Resolu��o da quest�o 1 dispon�vel no moodle. */
 	public int contaNosIntervalo(T min, T max)
 	{
@@ -601,4 +375,221 @@ public class Arvbin<T extends Comparable<T>> {
 
 		System.out.println();
 	}
+
+	//Questão 01:
+	public void imprimePreOrdem() {
+		System.out.print("(" + val);
+		if (esq != null) {
+			esq.imprimePreOrdem();
+		}
+		if (dir != null) {
+			dir.imprimePreOrdem();
+		}
+		System.out.print(")");
+
+	}
+
+	public void imprimePosOrdem() {
+		System.out.print("(");
+		if (esq != null) {
+			esq.imprimePosOrdem();
+		}
+		if (dir != null) {
+			dir.imprimePosOrdem();
+		}
+		System.out.print(val + ")");
+
+	}
+
+	public void imprimeEmOrdem() {
+		System.out.print("(");
+		if (esq != null)
+			esq.imprimeEmOrdem();
+		System.out.print(val);
+		if (dir != null)
+			dir.imprimeEmOrdem();
+		System.out.print(")");
+
+	}
+
+	// Questão 02:
+	public static Integer retornaSomaSubArvore(Arvbin<Integer> no) {
+
+		Integer soma = 0;
+		soma += no.val;
+
+		if (no.esq != null) {
+			soma += retornaSomaSubArvore(no.esq);
+
+		}
+		if (no.dir != null) {
+			soma += retornaSomaSubArvore(no.dir);
+		}
+		return soma;
+	}
+
+	// Questão 03:
+	public boolean eSimilar(Arvbin<T> arvore) {
+		Boolean teste = true;
+
+		if (!teste) {
+			return false;
+		}
+
+		if (arvore.dir == null && arvore.esq == null && this.dir == null && this.esq == null) {
+			return true;
+		}
+		else if (arvore.dir != null && arvore.esq != null && this.dir != null && this.esq != null) {
+			teste = this.dir.eSimilar(arvore.dir);
+			teste = this.esq.eSimilar(arvore.esq);
+		}
+		else {
+			return false;
+		}
+
+		if (teste){
+			System.out.println("É similar");
+		}
+		else{
+			System.out.println("Não é similar");
+		}
+		return teste;
+	}
+
+	//Questão 4:
+	public Arvbin<T> tornaRaiz(T valor) {
+		Arvbin<T> no = busca(valor);
+		Arvbin<T> aux = new Arvbin<T>(valor);
+		Queue<Arvbin<T>> novaFila = new LinkedList<>();
+
+		novaFila.add(this);
+		aux.defineVal(this.retornaVal());
+		this.defineVal(no.retornaVal());
+
+		Arvbin<T> temp = null;
+
+		while (!novaFila.isEmpty()) {
+			temp = novaFila.peek();
+			novaFila.remove();
+
+			if (temp.retornaEsq() == no) {
+				temp.defineEsq(new Arvbin<T>(aux.retornaVal()));
+			}
+			if (temp.retornaDir() == no) {
+				temp.defineDir(new Arvbin<T>(aux.retornaVal()));
+			}
+
+			if (temp.retornaEsq() != null) {
+				novaFila.add(temp.retornaEsq());
+			}
+
+			if (temp.retornaDir() != null) {
+				novaFila.add(temp.retornaDir());
+			}
+		}
+
+		return this;
+	}
+
+	//Questão 5:
+	public Arvbin<T> delete(T valor) {
+		if (this.val == null)
+			return this;
+
+		if (this.esq == null && this.dir == null) {
+			if (this.val.equals(valor)) {
+				this.val = null;
+			}
+			return this;
+		}
+
+		Queue<Arvbin<T>> fila = new LinkedList<>();
+		fila.add(this);
+		Arvbin<T> temp = null, chave = null;
+
+		while (!fila.isEmpty()) {
+			temp = fila.peek();
+			fila.remove();
+
+			if (temp.val.equals(valor))
+				chave = temp;
+
+			if (temp.esq != null)
+				fila.add(temp.esq);
+
+			if (temp.dir != null)
+				fila.add(temp.dir);
+		}
+
+		if (chave != null) {
+			T x = temp.val;
+			deletaAux(temp);
+			chave.val = x;
+		}
+
+		return this;
+	}
+
+	private void deletaAux(Arvbin<T> paraDeletar) {
+		Queue<Arvbin<T>> novaFila = new LinkedList<>();
+		novaFila.add(this);
+
+		Arvbin<T> temp = null;
+
+		while (!novaFila.isEmpty()) {
+			temp = novaFila.peek();
+			novaFila.remove();
+
+			if (temp == paraDeletar) {
+				temp = null;
+				return;
+			}
+
+			if (temp.dir != null) {
+				if (temp.dir == paraDeletar) {
+					temp.dir = null;
+					return;
+				} else {
+					novaFila.add(temp.dir);
+				}
+			}
+
+			if (temp.esq != null) {
+				if (temp.esq == paraDeletar) {
+					temp.esq = null;
+					return;
+				} else {
+					novaFila.add(temp.esq);
+				}
+			}
+		}
+	}
+
+	public boolean eBalanceada() {
+		return verificaBalanceamento(this) != -1;
+	}
+
+	private int verificaBalanceamento(Arvbin<T> no) {
+		if (no == null) {
+			return 0;
+		}
+
+		int alturaEsq = verificaBalanceamento(no.retornaEsq());
+		if (alturaEsq == -1) {
+			return -1;
+		}
+
+		int alturaDir = verificaBalanceamento(no.retornaDir());
+		if (alturaDir == -1) {
+			return -1;
+		}
+
+		int diferencaAltura = Math.abs(alturaEsq - alturaDir);
+		if (diferencaAltura > 1) {
+			return -1;
+		}
+
+		return Math.max(alturaEsq, alturaDir) + 1;
+	}
+
 }

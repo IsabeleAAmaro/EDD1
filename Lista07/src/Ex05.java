@@ -1,5 +1,14 @@
 public class Ex05 {
 
+    /*
+    5) Desenvolva um método que, dado um parâmetro T valor, torne o nó que contém esse
+    valor a nova raiz da árvore. O método deve possuir o protótipo abaixo:
+    public Arvbin<T> tornaRaiz(T valor);
+     */
+
+    //Complexidade do tornaRaiz: O(n)
+    //Complexidade do imprimeEmOrdem: O(n)
+
     public static void main(String[] args) {
         Arvbin<Integer> no1 = new Arvbin<>(5);
         Arvbin<Integer> no2 = new Arvbin<>(10);

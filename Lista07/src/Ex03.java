@@ -1,8 +1,16 @@
 public class Ex03 {
 
     /*
+    3) Duas árvores binárias são similares se: as duas são vazias ou as duas não são vazias, e
+    se suas subárvores da esquerda são similares e se suas subárvores da direita são também
+    similares. Dessa forma, implemente um método de seguinte protótipo para determinar se uma
+    árvore passada como parâmetro é similar à árvore corrente:
+    public boolean eSimilar(Arvbin<T> arvore);
 
      */
+
+    //Complexidade do eSimilar: O(log n)
+    //Complexidade do imprimeEmOrdem: O(n)
 
     public static void main(String[] args) {
 
