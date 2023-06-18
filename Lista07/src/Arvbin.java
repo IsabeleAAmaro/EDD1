@@ -3,8 +3,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class Arvbin<T extends Comparable<T>>
-{
+public class Arvbin<T extends Comparable<T>> {
 	private T val;   /* Valor armazenado na raiz. */
 
 	/* Refer�ncias para sub�rvores. */
@@ -351,6 +350,35 @@ public class Arvbin<T extends Comparable<T>>
 
 		return this;
 	}
+
+	//Questão 6: TESTAR MAIS
+	public boolean eBalanceada() {
+		return verificaBalanceamento(this) != -1;
+	}
+
+	private int verificaBalanceamento(Arvbin<T> no) {
+		if (no == null) {
+			return 0;
+		}
+
+		int alturaEsq = verificaBalanceamento(no.retornaEsq());
+		if (alturaEsq == -1) {
+			return -1;
+		}
+
+		int alturaDir = verificaBalanceamento(no.retornaDir());
+		if (alturaDir == -1) {
+			return -1;
+		}
+
+		int diferencaAltura = Math.abs(alturaEsq - alturaDir);
+		if (diferencaAltura > 1) {
+			return -1;
+		}
+
+		return Math.max(alturaEsq, alturaDir) + 1;
+	}
+
 
 	private void deletaAux(Arvbin<T> paraDeletar) {
 		Queue<Arvbin<T>> novaFila = new LinkedList<>();

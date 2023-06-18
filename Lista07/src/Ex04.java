@@ -1,4 +1,4 @@
-public class Ex4 {
+public class Ex04 {
 
     public static void main(String[] args) {
         Arvbin<Integer> no1 = new Arvbin<>(5);
