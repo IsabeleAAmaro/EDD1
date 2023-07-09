@@ -41,7 +41,7 @@ public class HeapBinariaMinima
 	/* Imprime os elementos da heap. */
 	public void imprime()
 	{
-		System.out.print("Conte?do da heap: ");
+		System.out.print("Conteúdo da heap: ");
 		
 		for(int i = 1; i <= n; i++)
 			System.out.print(vetor[i] + " ");
@@ -160,32 +160,26 @@ public class HeapBinariaMinima
 
 	//QUESTÃO 02:
 
-	//Anotações
-	/*
-	O tamanho do vetor é definido como tam + 1 porque o índice 0 não é utilizado na implementação da heap binária.
-
-	Na implementação, os elementos da heap são armazenados a partir do índice 1 até o índice n, onde n representa o número de elementos presentes na heap.
-	Portanto, o vetor precisa ter espaço para armazenar n elementos, e por isso é criado com o tamanho tam + 1.
-	 */
-
 	public HeapBinariaMinima(HeapBinariaMaxima heapMaxima) {
 		tam = heapMaxima.getN();
 		vetor = new int[tam + 1];
 
-		for (int i = 1; i <= tam; i++) {
-			vetor[i] = heapMaxima.removeMax();
-		}
+		for (int i = 1; i <= tam; i++) vetor[i] = heapMaxima.removeMax();
 		n = tam;
 		constroiHeap();
 	}
 
-	//QUESTÃO 03:
+	//QUESTÃO 03 - Parte da heap minima, o resto está na outra classe
 
+	public int getN() {
+		return n;
+	}
 
+	public int getTam() {
+		return tam;
+	}
 
-
-
-
-
-
+	public int[] getVetor() {
+		return vetor;
+	}
 }

@@ -1,10 +1,9 @@
-public class HeapBinariaMaxima
-{
+public class HeapBinariaMaxima {
 	private int n;               /* Numero de elementos no heap. */   
 	private int tam;             /* Tamanho m?ximo do heap. */
 	private int[] vetor;          /* Vetor com elementos. */
 
-	/* Constr?i heap vazio. */
+	/* Constroi heap vazio. */
 	public HeapBinariaMaxima(int tamanho)
 	{
 		n = 0;
@@ -12,7 +11,7 @@ public class HeapBinariaMaxima
 		vetor = new int[tamanho+1];
 	}
 
-	/* Constr?i heap a partir de vetor v. */
+	/* Constroi heap a partir de vetor v. */
 	public HeapBinariaMaxima(int tamanho, int[] v)
 	{
 		tam = tamanho;
@@ -39,8 +38,8 @@ public class HeapBinariaMaxima
 	}
 
 	/* Imprime os elementos da heap. */
-	public void imprime()
-	{
+	public void imprime() {
+		System.out.print("Conteúdo da heap: ");
 		for(int i = 1; i <= n; i++)
 			System.out.print(vetor[i] + " ");
 
@@ -194,7 +193,57 @@ public class HeapBinariaMaxima
 
 	//QUESTÕES DA LISTA 8:
 
+	//QUESTÃO 03:
+	public HeapBinariaMaxima(HeapBinariaMinima heapMinima) {
+		int tamanho = heapMinima.getN();
+		int[] vetorMinimo = heapMinima.getVetor();
 
+		tam = tamanho;
+		vetor = new int[tamanho + 1];
+		n = tamanho;
 
+		for (int i = 1; i <= tamanho; i++) {
+			vetor[i] = vetorMinimo[i];
+		}
 
+		constroiHeap();
+	}
+
+	//QUESTÃO 05:
+	public boolean verificaPropriedadeHeap(int[] vetor) {
+
+		for (int i = 1; i <= vetor.length / 2; i++) {
+			int filhoEsq = 2 * i;
+			int filhoDir = 2 * i + 1;
+
+			if (filhoEsq <= vetor.length && vetor[filhoEsq - 1] > vetor[i - 1]) {
+				return false;
+			}
+
+			if (filhoDir <= vetor.length && vetor[filhoDir - 1] > vetor[i - 1]) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	//QUESTÃO 06:
+	public boolean remove(int i) {
+		if (i <= 0 || i > n) {
+			System.out.println("Posição inválida");
+			return false;
+		}
+
+		if (vazia()) {
+			System.out.println("Heap vazia");
+			return false;
+		}
+
+		int elementoRemovido = vetor[i];
+		vetor[i] = vetor[n];
+		n--;
+		refaz(i);
+
+		return true;
+	}
 }

@@ -3,11 +3,12 @@ public class Main
     public static void main(String args[])
     {
         int tamanho = 6;
-        int vetor[] = {1, 5, 6, 3, 7, 2};
+        int[] vetor = {1, 5, 6, 3, 7, 2};
 
         HeapBinariaMinima heap = new HeapBinariaMinima(tamanho, vetor);
 
         heap.imprime();
+        //Resultado: 1 3 2 5 7 6
 
         heap.fazVazia();
 
